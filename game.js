@@ -1,9 +1,9 @@
 import readline from "readline-sync";
 
-class GuessingGame {
+class GameTebakAngka {
   constructor() {
-    this.numberToGuess = Math.floor(Math.random() * 100) + 1;
-    this.attempts = 0;
+    this.angkaDitebak = Math.floor(Math.random() * 100) + 1;
+    this.percobaan = 0;
   }
 
   play() {
@@ -13,21 +13,21 @@ class GuessingGame {
     );
 
     while (true) {
-      const guess = parseInt(readline.question("Masukkan tebakan Anda: "));
+      const tebak = parseInt(readline.question("Masukkan tebakan Anda: "));
 
-      if (isNaN(guess) || guess < 1 || guess > 100) {
+      if (isNaN(tebak) || tebak < 1 || tebak > 100) {
         console.log("Mohon masukkan angka antara 1 hingga 100.");
         continue;
       }
 
-      this.attempts++;
+      this.percobaan++;
 
-      if (guess === this.numberToGuess) {
+      if (tebak === this.angkaDitebak) {
         console.log(
-          `Selamat! Anda berhasil menebak angka ${this.numberToGuess} dalam ${this.attempts} percobaan.`
+          `Selamat! Anda berhasil menebak angka ${this.angkaDitebak} dalam ${this.percobaan} percobaan.`
         );
         break;
-      } else if (guess < this.numberToGuess) {
+      } else if (tebak < this.angkaDitebak) {
         console.log("Angka yang Anda tebak terlalu kecil. Coba lagi.");
       } else {
         console.log("Angka yang Anda tebak terlalu besar. Coba lagi.");
@@ -36,5 +36,5 @@ class GuessingGame {
   }
 }
 
-const game = new GuessingGame();
+const game = new GameTebakAngka();
 game.play();
